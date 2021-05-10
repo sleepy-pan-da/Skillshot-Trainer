@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Hitboxes and Hurtboxes/Hurtbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://348663__deganoth__cg-full-single.wav" type="AudioStream" id=4]
+[ext_resource path="res://skillshot_trainer_art/player_animation-Sheet.png" type="Texture" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "Animate",
+"speed": 6.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -9.47575, 1.54256 )
+shape = SubResource( 1 )
+
+[node name="Muzzle" type="Position2D" parent="."]
+position = Vector2( 25.6079, 2.86983 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 3 )]
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( -9.46932, 1.48804 )
+shape = SubResource( 2 )
+
+[node name="Gun_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 1.5708
+frames = SubResource( 7 )
+animation = "Animate"
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
+[editable path="Hurtbox"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/348663__deganoth__cg-full-single.wav-cfdad978637638be6aa820c07fcc07d1.sample"
+
+[deps]
+
+source_file="res://348663__deganoth__cg-full-single.wav"
+dest_files=[ "res://.import/348663__deganoth__cg-full-single.wav-cfdad978637638be6aa820c07fcc07d1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
